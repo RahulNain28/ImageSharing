@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" id="fileInput">
+        <button type="submit">Upload</button>
+    </form>
+    
+    <form action="/files" method="GET"></form>
+        <button name="Files">Files</button>
+    </form>
+
+    <script>
+         const fileInput = document.getElementById("fileInput");
+
+        fileInput.addEventListener("change", e=>{
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", ()=>{
+                console.log(reader.result);
+            });
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
